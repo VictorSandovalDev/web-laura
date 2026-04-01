@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import basePath from "@/lib/basePath";
 
 export default function Hero() {
   return (
@@ -53,7 +54,7 @@ export default function Hero() {
             <div className="absolute -top-5 -right-5 w-full h-full bg-[var(--color-gold)] rounded-3xl opacity-20 z-[1] animate-[blobFloat_6s_ease-in-out_infinite]" />
             <div className="absolute -bottom-4 -left-4 w-28 h-28 border-3 border-[var(--color-accent)] rounded-3xl opacity-35 z-[1] animate-[blobFloat_8s_ease-in-out_infinite_reverse]" />
             <Image
-              src="/images/generated-1775007848916.png"
+              src={`${basePath}/images/generated-1775007848916.png`}
               alt="Ps. Laura Juliana Quintero Navarro"
               fill
               priority

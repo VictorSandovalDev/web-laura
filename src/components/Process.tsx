@@ -9,8 +9,8 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-h">
-      <div className="max-w-[1200px] mx-auto px-6 relative z-[1]">
+    <section className="py-16 sm:py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-h">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-[1]">
         <div className="text-center mb-16 scroll-reveal">
           <span className="inline-block text-xs font-semibold tracking-[3px] uppercase text-[var(--color-gold)] mb-4 pl-10 relative before:absolute before:left-0 before:top-1/2 before:w-7 before:h-[2px] before:bg-[var(--color-gold)]">
             Proceso

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import basePath from "@/lib/basePath";
 import { useEffect, useRef, useState } from "react";
 
 function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
@@ -39,14 +40,14 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
 
 export default function About() {
   return (
-    <section id="sobre-mi" className="py-28 relative z-[1] bg-[var(--color-bg)]">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section id="sobre-mi" className="py-16 sm:py-28 relative z-[1] bg-[var(--color-bg)]">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-20 items-center">
           {/* Images */}
           <div className="relative scroll-reveal">
             <div className="w-[85%] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(15,28,56,0.1)]">
               <Image
-                src="/images/generated-1775007861727.png"
+                src={`${basePath}/images/generated-1775007861727.png`}
                 alt="Laura Juliana en su consultorio"
                 width={500}
                 height={400}
@@ -56,7 +57,7 @@ export default function About() {
             </div>
             <div className="absolute -bottom-8 right-0 w-[55%] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               <Image
-                src="/images/generated-1775008203555.png"
+                src={`${basePath}/images/generated-1775008203555.png`}
                 alt="Consultorio profesional"
                 width={300}
                 height={250}

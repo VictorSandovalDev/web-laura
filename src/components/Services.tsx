@@ -46,27 +46,27 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-v">
-      <div className="max-w-[1200px] mx-auto px-6 relative z-[1]">
+    <section id="servicios" className="py-16 sm:py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-v">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-[1]">
         {/* Header */}
         <div className="text-center mb-16 scroll-reveal">
           <span className="inline-block text-xs font-semibold tracking-[3px] uppercase text-[var(--color-gold)] mb-4 pl-10 relative before:absolute before:left-0 before:top-1/2 before:w-7 before:h-[2px] before:bg-[var(--color-gold)]">
             Servicios
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-primary)] mb-5" style={{ fontFamily: "var(--font-cormorant)" }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--color-primary)] mb-5" style={{ fontFamily: "var(--font-cormorant)" }}>
             Como puedo <em className="italic text-[var(--color-accent)]">ayudarte</em>
           </h2>
-          <p className="text-[var(--color-text-light)] max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-[var(--color-text-light)] max-w-xl mx-auto leading-relaxed">
             Ofrezco diferentes modalidades de terapia adaptadas a tus necesidades especificas
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7 max-w-md sm:max-w-none mx-auto">
           {services.map((s, i) => (
             <div
               key={i}
-              className={`interactive group relative rounded-3xl p-10 transition-all duration-500 overflow-hidden scroll-reveal ${
+              className={`interactive group relative rounded-2xl sm:rounded-3xl p-6 sm:p-10 transition-all duration-500 overflow-hidden scroll-reveal ${
                 s.featured
                   ? "bg-[var(--color-primary)] text-white shadow-xl"
                   : "bg-white shadow-sm hover:shadow-xl hover:-translate-y-2"

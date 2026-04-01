@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import basePath from "@/lib/basePath";
 
 const items = [
   {
@@ -22,9 +23,9 @@ const items = [
 
 export default function Approach() {
   return (
-    <section id="enfoque" className="py-28 relative z-[1] bg-[var(--color-bg)]">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+    <section id="enfoque" className="py-16 sm:py-28 relative z-[1] bg-[var(--color-bg)]">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-20 items-start">
           {/* Content */}
           <div className="scroll-reveal">
             <span className="inline-block text-xs font-semibold tracking-[3px] uppercase text-[var(--color-gold)] mb-4 pl-10 relative before:absolute before:left-0 before:top-1/2 before:w-7 before:h-[2px] before:bg-[var(--color-gold)]">
@@ -61,7 +62,7 @@ export default function Approach() {
           <div className="scroll-reveal">
             <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(15,28,56,0.1)]">
               <Image
-                src="/images/generated-1775008223623.png"
+                src={`${basePath}/images/generated-1775008223623.png`}
                 alt="Consultorio de Laura Juliana"
                 width={600}
                 height={500}

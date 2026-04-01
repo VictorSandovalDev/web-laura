@@ -56,9 +56,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-v">
-      <div className="max-w-[1200px] mx-auto px-6 relative z-[1]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="contacto" className="py-16 sm:py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-v">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-[1]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-start">
           {/* Info */}
           <div className="scroll-reveal">
             <span className="inline-block text-xs font-semibold tracking-[3px] uppercase text-[var(--color-gold)] mb-4 pl-10 relative before:absolute before:left-0 before:top-1/2 before:w-7 before:h-[2px] before:bg-[var(--color-gold)]">
@@ -104,7 +104,7 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-3xl p-10 shadow-lg scroll-reveal">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-lg scroll-reveal">
             <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-8" style={{ fontFamily: "var(--font-cormorant)" }}>
               Agenda tu primera cita
             </h3>
