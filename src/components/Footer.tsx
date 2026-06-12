@@ -1,10 +1,10 @@
 "use client";
 
 const links = [
-  { href: "#sobre-mi", label: "Sobre Mi" },
+  { href: "#sobre-mi", label: "Sobre Psiforensic" },
   { href: "#servicios", label: "Servicios" },
-  { href: "#enfoque", label: "Enfoque" },
-  { href: "#testimonios", label: "Testimonios" },
+  { href: "#procedimiento", label: "Procedimiento" },
+  { href: "#faq", label: "Preguntas" },
   { href: "#contacto", label: "Contacto" },
 ];
 
@@ -20,9 +20,9 @@ export default function Footer() {
         <div className="mb-7">
           <span className="text-3xl text-[var(--color-gold)]">&#10047;</span>
           <h3 className="text-xl mt-2" style={{ fontFamily: "var(--font-cormorant)" }}>
-            Ps. Laura Juliana Quintero Navarro
+            Psiforensic
           </h3>
-          <p className="text-sm text-white/50 mt-1">Psicologia Clinica - Bogota, Colombia</p>
+          <p className="text-sm text-white/50 mt-1">Evaluacion psicologica forense · Cobertura nacional</p>
         </div>
 
         <div className="flex justify-center gap-7 flex-wrap mb-7">
@@ -40,7 +40,7 @@ export default function Footer() {
 
         <div className="pt-7 border-t border-white/10">
           <p className="text-xs text-white/40">
-            &copy; 2026 Laura Juliana Quintero Navarro. Todos los derechos reservados.
+            &copy; 2026 Psiforensic. Todos los derechos reservados. · Laura Quintero · Psicologia Forense
           </p>
         </div>
       </div>

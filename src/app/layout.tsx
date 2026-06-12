@@ -23,9 +23,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Ps. Laura Juliana Quintero Navarro | Psicologia Clinica",
+  title: "Psiforensic | Evaluacion Psicologica Forense — Peritajes y Asesorias",
   description:
-    "Psicologa clinica Laura Juliana Quintero Navarro. Terapia individual, de pareja y familiar. Acompanamiento profesional para tu bienestar emocional.",
+    "Psiforensic: evaluacion psicologica forense con rigor cientifico. Peritajes, contraperitajes, metapericias y asesoria tecnico-cientifica en Barranquilla, Bogota y a nivel nacional.",
 };
 
 export default function RootLayout({

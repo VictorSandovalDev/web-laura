@@ -9,28 +9,9 @@ const contactInfo = [
         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    label: "Email",
-    value: "contacto@laurajulianapsicologia.com",
-    color: "bg-[var(--color-accent)]",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-      </svg>
-    ),
-    label: "Telefono",
-    value: "+57 300 123 4567",
-    color: "bg-[var(--color-accent)]",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
-      </svg>
-    ),
-    label: "Ubicacion",
-    value: "Bogota, Colombia",
+    label: "Correo",
+    value: "lauraquintero@psiforensic.com",
+    href: "mailto:lauraquintero@psiforensic.com",
     color: "bg-[var(--color-accent)]",
   },
   {
@@ -41,13 +22,40 @@ const contactInfo = [
       </svg>
     ),
     label: "WhatsApp",
-    value: "Escribeme directamente",
+    value: "Escribenos por WhatsApp",
+    href: "https://wa.me/message/HLT336NQACE6D1",
     color: "bg-[#25D366]",
   },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
+      </svg>
+    ),
+    label: "Ubicacion",
+    value: "Barranquilla · Bogota · Cobertura nacional",
+    href: null,
+    color: "bg-[var(--color-accent)]",
+  },
+];
+
+const services = [
+  "Evaluacion de credibilidad de testimonio",
+  "Evaluacion de dano y secuelas psicologicas",
+  "Evaluacion de victimas y agresores",
+  "Evaluacion forense de ninos, ninas y adolescentes",
+  "Idoneidad parental y custodia",
+  "Riesgo de comportamiento violento",
+  "Capacidad de testar",
+  "Metapericia",
+  "Contraperitaje",
+  "Asesoria tecnico-cientifica",
+  "Otro / No estoy seguro",
 ];
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,48 +73,51 @@ export default function Contact() {
               Contacto
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-primary)] leading-tight mb-5" style={{ fontFamily: "var(--font-cormorant)" }}>
-              Comienza tu camino hacia el <em className="italic text-[var(--color-accent)]">bienestar</em>
+              Agenda tu <em className="italic text-[var(--color-accent)]">consulta inicial</em>
             </h2>
             <p className="text-[var(--color-text-light)] leading-relaxed mb-8">
-              Dar el primer paso es lo mas importante. Estoy aqui para acompanarte. No dudes en contactarme para agendar tu primera cita o resolver cualquier duda.
+              Cuentanos brevemente sobre tu caso. En la consulta inicial estudiamos la situacion y te orientamos sobre el servicio mas adecuado.
             </p>
 
             <div className="flex flex-col gap-4 mb-8">
-              {contactInfo.map((c, i) => (
-                <div
-                  key={i}
-                  className="interactive flex items-center gap-4 p-4 rounded-2xl bg-white hover:translate-x-2 hover:shadow-sm transition-all duration-400"
-                >
-                  <div className={`w-11 h-11 ${c.color} text-white rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    {c.icon}
+              {contactInfo.map((c, i) => {
+                const inner = (
+                  <>
+                    <div className={`w-11 h-11 ${c.color} text-white rounded-lg flex items-center justify-center flex-shrink-0`}>
+                      {c.icon}
+                    </div>
+                    <div>
+                      <strong className="block text-sm text-[var(--color-text)]">{c.label}</strong>
+                      <span className="text-sm text-[var(--color-text-light)]">{c.value}</span>
+                    </div>
+                  </>
+                );
+                return c.href ? (
+                  <a
+                    key={i}
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="interactive flex items-center gap-4 p-4 rounded-2xl bg-white hover:translate-x-2 hover:shadow-sm transition-all duration-400"
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div
+                    key={i}
+                    className="interactive flex items-center gap-4 p-4 rounded-2xl bg-white hover:translate-x-2 hover:shadow-sm transition-all duration-400"
+                  >
+                    {inner}
                   </div>
-                  <div>
-                    <strong className="block text-sm text-[var(--color-text)]">{c.label}</strong>
-                    <span className="text-sm text-[var(--color-text-light)]">{c.value}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Social */}
-            <div className="flex gap-3">
-              {["Instagram", "Facebook", "LinkedIn"].map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  className="interactive w-11 h-11 rounded-full border border-[var(--color-text-lighter)] text-[var(--color-text-light)] flex items-center justify-center text-sm font-bold hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)] hover:text-white hover:-translate-y-1 transition-all duration-300"
-                  aria-label={s}
-                >
-                  {s[0]}
-                </a>
-              ))}
+                );
+              })}
             </div>
           </div>
 
           {/* Form */}
           <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-lg scroll-reveal">
             <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-8" style={{ fontFamily: "var(--font-cormorant)" }}>
-              Agenda tu primera cita
+              Agenda tu consulta inicial
             </h3>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
@@ -125,33 +136,82 @@ export default function Contact() {
                 <div className="form-line" />
               </div>
               <div className="form-group">
-                <select id="service" name="service" required defaultValue="">
+                <select id="service" name="service" defaultValue="">
                   <option value="" disabled />
-                  <option value="individual">Terapia Individual</option>
-                  <option value="pareja">Terapia de Pareja</option>
-                  <option value="familiar">Terapia Familiar</option>
+                  {services.map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
                 </select>
-                <label htmlFor="service">Tipo de terapia</label>
+                <label htmlFor="service">Tipo de servicio</label>
                 <div className="form-line" />
               </div>
               <div className="form-group">
                 <textarea id="message" name="message" rows={4} placeholder=" " style={{ resize: "vertical", minHeight: 100 }} />
-                <label htmlFor="message">Cuentame brevemente tu situacion</label>
+                <label htmlFor="message">Cuentanos brevemente tu caso</label>
                 <div className="form-line" />
               </div>
+              <label className="flex items-start gap-3 mb-6 text-xs text-[var(--color-text-light)] leading-relaxed">
+                <input type="checkbox" required className="mt-0.5 flex-shrink-0 accent-[var(--color-accent)]" />
+                <span>
+                  Autorizo el tratamiento de mis datos conforme a la{" "}
+                  <button
+                    type="button"
+                    onClick={() => setShowPrivacy(true)}
+                    className="text-[var(--color-gold)] font-semibold underline"
+                  >
+                    Politica de Privacidad
+                  </button>
+                  .
+                </span>
+              </label>
               <button
                 type="submit"
                 className="w-full py-4 rounded-full text-[0.95rem] font-medium bg-[var(--color-accent)] text-white hover:bg-[var(--color-primary)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(121,6,4,0.3)]"
               >
-                {submitted ? "Mensaje Enviado!" : "Enviar Mensaje"}
+                {submitted ? "Solicitud Enviada!" : "Enviar solicitud"}
               </button>
               <p className="text-center text-xs text-[var(--color-text-lighter)] mt-4">
-                Tu informacion es completamente confidencial.
+                Tu informacion se maneja de forma confidencial.
               </p>
             </form>
           </div>
         </div>
       </div>
+
+      {/* Modal Privacidad */}
+      {showPrivacy && (
+        <div
+          className="fixed inset-0 z-[2000] flex items-center justify-center p-6 bg-[rgba(15,28,56,0.6)] backdrop-blur-sm"
+          onClick={() => setShowPrivacy(false)}
+        >
+          <div
+            className="relative bg-white rounded-3xl max-w-[640px] w-full max-h-[84vh] overflow-auto p-8 sm:p-10 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowPrivacy(false)}
+              className="absolute top-5 right-6 text-3xl leading-none text-[var(--color-text-light)] hover:text-[var(--color-accent)]"
+              aria-label="Cerrar"
+            >
+              &times;
+            </button>
+            <h3 className="text-2xl font-bold text-[var(--color-primary)] mb-5" style={{ fontFamily: "var(--font-cormorant)" }}>
+              Aviso de Privacidad y Tratamiento de Datos
+            </h3>
+            <p className="text-sm text-[var(--color-text-light)] mb-4 leading-relaxed">
+              En cumplimiento de la Ley 1581 de 2012, los datos que suministras a traves de este formulario (nombre, correo y telefono) seran tratados de forma confidencial y unicamente para responder tu solicitud y coordinar una consulta inicial. No se solicitan datos sensibles a traves de este sitio.
+            </p>
+            <h4 className="text-base font-semibold text-[var(--color-primary)] mb-1" style={{ fontFamily: "var(--font-cormorant)" }}>Tus derechos</h4>
+            <p className="text-sm text-[var(--color-text-light)] mb-4 leading-relaxed">
+              Como titular, puedes conocer, actualizar, rectificar o suprimir tus datos y revocar esta autorizacion escribiendo a lauraquintero@psiforensic.com.
+            </p>
+            <h4 className="text-base font-semibold text-[var(--color-primary)] mb-1" style={{ fontFamily: "var(--font-cormorant)" }}>Autorizacion</h4>
+            <p className="text-sm text-[var(--color-text-light)] leading-relaxed">
+              Al enviar este formulario, autorizas el tratamiento de tus datos para los fines descritos en este aviso.
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

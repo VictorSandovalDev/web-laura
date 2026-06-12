@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 
 const links = [
-  { href: "#sobre-mi", label: "Sobre Mi" },
+  { href: "#sobre-mi", label: "Sobre Psiforensic" },
   { href: "#servicios", label: "Servicios" },
-  { href: "#enfoque", label: "Enfoque" },
-  { href: "#testimonios", label: "Testimonios" },
+  { href: "#procedimiento", label: "Procedimiento" },
+  { href: "#faq", label: "Preguntas" },
 ];
 
 export default function Navbar() {
@@ -42,7 +42,7 @@ export default function Navbar() {
         >
           <span className="text-2xl text-[var(--color-gold)]">&#10047;</span>
           <span className="text-lg font-semibold text-[var(--color-primary)]">
-            Ps. Laura Juliana
+            Psi<span className="text-[var(--color-gold)]">forensic</span>
           </span>
         </a>
 
@@ -65,7 +65,7 @@ export default function Navbar() {
               onClick={(e) => { e.preventDefault(); scrollTo("#contacto"); }}
               className="text-sm font-medium text-white bg-[var(--color-accent)] px-6 py-2.5 rounded-full hover:bg-[var(--color-primary)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Agenda tu Cita
+              Agendar consulta
             </a>
           </li>
         </ul>
@@ -88,7 +88,7 @@ export default function Navbar() {
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {[...links, { href: "#contacto", label: "Agenda tu Cita" }].map((l) => (
+        {[...links, { href: "#contacto", label: "Agendar consulta" }].map((l) => (
           <a
             key={l.href}
             href={l.href}

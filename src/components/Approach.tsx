@@ -6,18 +6,23 @@ import basePath from "@/lib/basePath";
 const items = [
   {
     index: "01",
-    title: "Terapia Cognitivo-Conductual",
-    desc: "Identificamos y transformamos patrones de pensamiento que generan malestar emocional.",
+    title: "Rigor cientifico",
+    desc: "Evaluaciones fundamentadas en metodologias validadas y evidencia actualizada.",
   },
   {
     index: "02",
-    title: "Enfoque Humanista",
-    desc: "Valoro tu unicidad y te acompano en el descubrimiento de tu propio potencial de crecimiento.",
+    title: "Imparcialidad",
+    desc: "Informes objetivos al servicio de la verdad procesal, no de una de las partes.",
   },
   {
     index: "03",
-    title: "Mindfulness",
-    desc: "Incorporamos tecnicas de atencion plena para desarrollar mayor consciencia y equilibrio emocional.",
+    title: "Confidencialidad",
+    desc: "Manejo reservado y etico de toda la informacion del caso.",
+  },
+  {
+    index: "04",
+    title: "Fundamentacion tecnica",
+    desc: "Informes claros, defendibles y sustentables para su ratificacion en sala.",
   },
 ];
 
@@ -29,13 +34,13 @@ export default function Approach() {
           {/* Content */}
           <div className="scroll-reveal">
             <span className="inline-block text-xs font-semibold tracking-[3px] uppercase text-[var(--color-gold)] mb-4 pl-10 relative before:absolute before:left-0 before:top-1/2 before:w-7 before:h-[2px] before:bg-[var(--color-gold)]">
-              Mi Enfoque
+              Por que elegir Psiforensic
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-primary)] leading-tight mb-5" style={{ fontFamily: "var(--font-cormorant)" }}>
-              Un enfoque <em className="italic text-[var(--color-accent)]">integral</em> y humano
+              Rigor, objetividad y <em className="italic text-[var(--color-accent)]">defensa tecnica</em>
             </h2>
             <p className="text-[var(--color-text-light)] text-lg leading-relaxed mb-10">
-              Trabajo desde un enfoque integrativo que combina diferentes corrientes terapeuticas para ofrecer un acompanamiento personalizado y efectivo.
+              Combinamos rigor cientifico, imparcialidad y una solida fundamentacion tecnica en cada peritaje, para entregar informes claros y defendibles ante los tribunales.
             </p>
 
             <div className="flex flex-col gap-7">
@@ -63,7 +68,7 @@ export default function Approach() {
             <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(15,28,56,0.1)]">
               <Image
                 src={`${basePath}/images/generated-1775008223623.png`}
-                alt="Consultorio de Laura Juliana"
+                alt="Psiforensic · evaluacion psicologica forense"
                 width={600}
                 height={500}
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -72,9 +77,9 @@ export default function Approach() {
               />
               <div className="absolute bottom-0 left-0 right-0 p-8 pt-12 bg-gradient-to-t from-[rgba(15,28,56,0.9)] to-transparent text-white">
                 <blockquote className="italic text-lg leading-relaxed mb-2" style={{ fontFamily: "var(--font-cormorant)" }}>
-                  &ldquo;Cada persona tiene la capacidad de transformar su vida. Mi rol es acompanarte en ese proceso con respeto y profesionalismo.&rdquo;
+                  &ldquo;Cada informe traduce el conocimiento cientifico de vanguardia en evidencia clara y util para la toma de decisiones judiciales.&rdquo;
                 </blockquote>
-                <cite className="not-italic text-sm text-[var(--color-gold-light)]">- Laura Juliana Quintero N.</cite>
+                <cite className="not-italic text-sm text-[var(--color-gold-light)]">- Laura Quintero · Psicologia Forense</cite>
               </div>
             </div>
           </div>

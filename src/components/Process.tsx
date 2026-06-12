@@ -1,22 +1,22 @@
 "use client";
 
 const steps = [
-  { num: 1, title: "Primer Contacto", desc: "Agenda tu primera cita. Conversamos brevemente sobre tus necesidades para preparar nuestro encuentro." },
-  { num: 2, title: "Evaluacion Inicial", desc: "En las primeras sesiones exploramos juntos tu situacion actual, tus objetivos y definimos un plan terapeutico." },
-  { num: 3, title: "Proceso Terapeutico", desc: "Trabajamos sesion a sesion con herramientas y estrategias adaptadas a tu ritmo y necesidades particulares." },
-  { num: 4, title: "Crecimiento y Cierre", desc: "Evaluamos tus avances, consolidamos aprendizajes y te preparamos para continuar tu camino con autonomia." },
+  { num: 1, title: "Consulta inicial", desc: "Estudio del caso y orientacion sobre la pertinencia del servicio requerido." },
+  { num: 2, title: "Evaluacion forense", desc: "Entrevistas forenses e instrumentos psicometricos objetivos segun el caso." },
+  { num: 3, title: "Informe pericial", desc: "Elaboracion del informe con analisis fundamentado en los hallazgos." },
+  { num: 4, title: "Ratificacion", desc: "Sustentacion del informe en audiencia o juicio cuando el proceso lo requiera." },
 ];
 
 export default function Process() {
   return (
-    <section className="py-16 sm:py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-h">
+    <section id="procedimiento" className="py-16 sm:py-28 relative z-[1] bg-[var(--color-warm-light)] stripe-h">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-[1]">
         <div className="text-center mb-16 scroll-reveal">
           <span className="inline-block text-xs font-semibold tracking-[3px] uppercase text-[var(--color-gold)] mb-4 pl-10 relative before:absolute before:left-0 before:top-1/2 before:w-7 before:h-[2px] before:bg-[var(--color-gold)]">
-            Proceso
+            Procedimiento
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-primary)]" style={{ fontFamily: "var(--font-cormorant)" }}>
-            Como funciona la <em className="italic text-[var(--color-accent)]">terapia</em>
+            Como trabajamos tu <em className="italic text-[var(--color-accent)]">caso</em>
           </h2>
         </div>
 

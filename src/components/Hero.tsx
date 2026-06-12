@@ -12,23 +12,23 @@ export default function Hero() {
           <p
             className="text-sm font-medium tracking-[2px] uppercase text-[var(--color-gold)] mb-3 opacity-0 animate-[fadeInUp_0.8s_ease_0.2s_forwards]"
           >
-            Bienvenido/a al espacio de
+            Psicologia forense · Colombia
           </p>
           <h1
             className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold leading-[1.15] mb-2 text-[var(--color-primary)] opacity-0 animate-[fadeInUp_0.8s_ease_0.4s_forwards]"
             style={{ fontFamily: "var(--font-cormorant)" }}
           >
-            <span className="block">Laura Juliana</span>
-            <span className="block text-[var(--color-accent)]">Quintero Navarro</span>
+            <span className="block">Evaluacion</span>
+            <span className="block text-[var(--color-accent)] italic">psicologica forense</span>
           </h1>
           <p
             className="text-xl italic text-[var(--color-gold)] mb-5 opacity-0 animate-[fadeInUp_0.8s_ease_0.6s_forwards]"
             style={{ fontFamily: "var(--font-cormorant)" }}
           >
-            Psicologia Clinica
+            Peritajes · Contraperitajes · Asesorias
           </p>
           <p className="text-base text-[var(--color-text-light)] max-w-[480px] mx-auto lg:mx-0 mb-9 leading-relaxed opacity-0 animate-[fadeInUp_0.8s_ease_0.8s_forwards]">
-            Un espacio seguro donde encontraras acompanamiento profesional para tu crecimiento personal y bienestar emocional.
+            Peritajes y asesorias psico-juridicas con rigor cientifico, al servicio de decisiones judiciales claras y fundamentadas.
           </p>
           <div className="flex gap-4 flex-wrap justify-center lg:justify-start opacity-0 animate-[fadeInUp_0.8s_ease_1s_forwards]">
             <a
@@ -36,14 +36,14 @@ export default function Hero() {
               onClick={(e) => { e.preventDefault(); document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" }); }}
               className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-[0.95rem] font-medium bg-[var(--color-accent)] text-white hover:bg-[var(--color-primary)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(121,6,4,0.3)]"
             >
-              Agenda tu Cita
+              Agendar consulta
             </a>
             <a
-              href="#sobre-mi"
-              onClick={(e) => { e.preventDefault(); document.querySelector("#sobre-mi")?.scrollIntoView({ behavior: "smooth" }); }}
+              href="#servicios"
+              onClick={(e) => { e.preventDefault(); document.querySelector("#servicios")?.scrollIntoView({ behavior: "smooth" }); }}
               className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-[0.95rem] font-medium border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white transition-all duration-300 hover:-translate-y-1"
             >
-              Conoceme
+              Ver servicios
             </a>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function Hero() {
             <div className="absolute -bottom-4 -left-4 w-28 h-28 border-3 border-[var(--color-accent)] rounded-3xl opacity-35 z-[1] animate-[blobFloat_8s_ease-in-out_infinite_reverse]" />
             <Image
               src={`${basePath}/images/generated-1775007848916.png`}
-              alt="Ps. Laura Juliana Quintero Navarro"
+              alt="Psiforensic · Evaluacion psicologica forense"
               fill
               priority
               unoptimized
