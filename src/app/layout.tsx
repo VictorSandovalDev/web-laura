@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Playfair_Display } from "next/font/google";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -34,13 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${inter.variable} ${cormorant.variable} ${playfair.variable}`}
-    >
-      <body className="min-h-full" style={{ fontFamily: "var(--font-inter)" }}>
-        {children}
-      </body>
+    <html lang="es" className={`${fraunces.variable} ${hanken.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
