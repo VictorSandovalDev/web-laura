@@ -3,6 +3,11 @@
 import { useState } from "react";
 
 const WA_LINK = "https://wa.me/message/HLT336NQACE6D1";
+const LEAD_EMAIL = "lauraquintero@psiforensic.com";
+
+// Pega aquí la URL del Web App de Google Apps Script (ver backend/README.md).
+// Mientras esté vacío, el formulario abrirá el correo del visitante como respaldo.
+const LEADS_ENDPOINT = "";
 
 function Logo() {
   return (
@@ -21,52 +26,78 @@ function Logo() {
 }
 
 const servicios = [
-  ["01", "Evaluacion de credibilidad de testimonio", "Analisis tecnico de la credibilidad del relato en contextos judiciales."],
-  ["02", "Evaluacion de dano y secuelas psicologicas", "Valoracion del impacto psicologico derivado de un hecho."],
-  ["03", "Evaluacion de victimas y agresores", "Casos de abuso sexual y violencia intrafamiliar."],
-  ["04", "Evaluacion forense de ninos, ninas y adolescentes", "Entrevista forense y valoracion adaptada a su edad y desarrollo."],
-  ["05", "Valoracion de idoneidad parental y custodia", "Apoyo tecnico en procesos de familia y custodia."],
-  ["06", "Valoracion del riesgo de comportamiento violento", "Estimacion del riesgo con instrumentos especializados."],
-  ["07", "Valoracion de capacidad de testar", "Evaluacion de la capacidad mental para otorgar testamento."],
-  ["08", "Metapericias", "Analisis critico de la calidad metodologica de un peritaje."],
-  ["09", "Contraperitajes", "Refutacion tecnica de peritajes presentados por la contraparte."],
-  ["10", "Asesoria tecnico-cientifica", "Apoyo experto en interrogatorio, contrainterrogatorio y teoria del caso."],
+  ["01", "Evaluación de credibilidad de testimonio", "Análisis técnico de la credibilidad del relato en contextos judiciales."],
+  ["02", "Evaluación de daño y secuelas psicológicas", "Valoración del impacto psicológico derivado de un hecho."],
+  ["03", "Evaluación de víctimas y agresores", "Casos de abuso sexual y violencia intrafamiliar."],
+  ["04", "Evaluación forense de niños, niñas y adolescentes", "Entrevista forense y valoración adaptada a su edad y desarrollo."],
+  ["05", "Valoración de idoneidad parental y custodia", "Apoyo técnico en procesos de familia y custodia."],
+  ["06", "Valoración del riesgo de comportamiento violento", "Estimación del riesgo con instrumentos especializados."],
+  ["07", "Valoración de capacidad de testar", "Evaluación de la capacidad mental para otorgar testamento."],
+  ["08", "Metapericias", "Análisis crítico de la calidad metodológica de un peritaje."],
+  ["09", "Contraperitajes", "Refutación técnica de peritajes presentados por la contraparte."],
+  ["10", "Asesoría técnico-científica", "Apoyo experto en interrogatorio, contrainterrogatorio y teoría del caso."],
 ];
 
 const why = [
-  ["◇", "Rigor cientifico", "Evaluaciones fundamentadas en metodologias validadas y evidencia actualizada."],
+  ["◇", "Rigor científico", "Evaluaciones fundamentadas en metodologías validadas y evidencia actualizada."],
   ["⚖", "Imparcialidad", "Informes objetivos al servicio de la verdad procesal, no de una de las partes."],
-  ["🔒", "Confidencialidad", "Manejo reservado y etico de toda la informacion del caso."],
-  ["§", "Fundamentacion tecnica", "Informes claros, defendibles y sustentables para su ratificacion en sala."],
+  ["🔒", "Confidencialidad", "Manejo reservado y ético de toda la información del caso."],
+  ["§", "Fundamentación técnica", "Informes claros, defendibles y sustentables para su ratificación en sala."],
 ];
 
 const steps = [
-  ["1", "Consulta inicial", "Estudio del caso y orientacion sobre la pertinencia del servicio requerido."],
-  ["2", "Evaluacion forense", "Entrevistas forenses e instrumentos psicometricos objetivos segun el caso."],
-  ["3", "Informe pericial", "Elaboracion del informe con analisis fundamentado en los hallazgos."],
-  ["4", "Ratificacion", "Sustentacion del informe en audiencia o juicio cuando el proceso lo requiera."],
+  ["1", "Consulta inicial", "Estudio del caso y orientación sobre la pertinencia del servicio requerido."],
+  ["2", "Evaluación forense", "Entrevistas forenses e instrumentos psicométricos objetivos según el caso."],
+  ["3", "Informe pericial", "Elaboración del informe con análisis fundamentado en los hallazgos."],
+  ["4", "Ratificación", "Sustentación del informe en audiencia o juicio cuando el proceso lo requiera."],
 ];
 
 const faqs = [
-  ["Que es un peritaje psicologico forense?", "Es una evaluacion realizada por un psicologo especializado para aportar informacion tecnica y objetiva en un proceso judicial. Su objetivo es ofrecer al juez o tribunal elementos cientificos que apoyen la toma de decisiones sobre aspectos psicologicos del caso."],
-  ["Cuanto cuesta un peritaje?", "Los honorarios dependen del tipo de evaluacion, la complejidad del caso y el alcance del servicio requerido. Por eso cada caso se valora de forma individual. Agenda una consulta inicial para conocer los detalles y recibir una orientacion ajustada a tu situacion."],
-  ["Cuanto tiempo toma una evaluacion?", "La duracion varia segun la complejidad del caso, el numero de personas a evaluar y la informacion disponible. En la consulta inicial se define un estimado realista para tu caso particular."],
-  ["Necesito un abogado para contratar un peritaje?", "No es obligatorio. Puedes solicitar una evaluacion o asesoria de forma directa. En algunos casos, la coordinacion con tu abogado facilita que los hallazgos se integren adecuadamente al proceso."],
+  ["¿Qué es un peritaje psicológico forense?", "Es una evaluación realizada por un psicólogo especializado para aportar información técnica y objetiva en un proceso judicial. Su objetivo es ofrecer al juez o tribunal elementos científicos que apoyen la toma de decisiones sobre aspectos psicológicos del caso."],
+  ["¿Cuánto cuesta un peritaje?", "Los honorarios dependen del tipo de evaluación, la complejidad del caso y el alcance del servicio requerido. Por eso cada caso se valora de forma individual. Agenda una consulta inicial para conocer los detalles y recibir una orientación ajustada a tu situación."],
+  ["¿Cuánto tiempo toma una evaluación?", "La duración varía según la complejidad del caso, el número de personas a evaluar y la información disponible. En la consulta inicial se define un estimado realista para tu caso particular."],
+  ["¿Necesito un abogado para contratar un peritaje?", "No es obligatorio. Puedes solicitar una evaluación o asesoría de forma directa. En algunos casos, la coordinación con tu abogado facilita que los hallazgos se integren adecuadamente al proceso."],
 ];
+
+type Status = "idle" | "sending" | "ok" | "error";
 
 export default function Home() {
   const [navOpen, setNavOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [privOpen, setPrivOpen] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
   const closeNav = () => setNavOpen(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.alert(
-      "Gracias por tu solicitud. Te contactaremos pronto.\n\n(Nota para el editor: conectar este formulario a un correo o servicio de envio.)"
-    );
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    setStatus("sending");
+
+    const body = new URLSearchParams();
+    fd.forEach((value, key) => body.append(key, String(value)));
+
+    try {
+      if (LEADS_ENDPOINT) {
+        await fetch(LEADS_ENDPOINT, { method: "POST", mode: "no-cors", body });
+      } else {
+        // Respaldo mientras no esté configurado el backend: abre el correo del visitante.
+        const asunto = encodeURIComponent("Nueva consulta - " + (fd.get("nombre") || ""));
+        const cuerpo = encodeURIComponent(
+          `Nombre: ${fd.get("nombre") || ""}\n` +
+            `Correo: ${fd.get("correo") || ""}\n` +
+            `Telefono: ${fd.get("telefono") || ""}\n` +
+            `Servicio: ${fd.get("servicio") || ""}\n\n` +
+            `Mensaje:\n${fd.get("mensaje") || ""}`
+        );
+        window.location.href = `mailto:${LEAD_EMAIL}?subject=${asunto}&body=${cuerpo}`;
+      }
+      setStatus("ok");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -84,7 +115,7 @@ export default function Home() {
             <a href="#faq" onClick={closeNav}>Preguntas</a>
             <a href="#contacto" className="nav-cta" onClick={closeNav}>Agendar consulta</a>
           </nav>
-          <button className="burger" aria-label="Menu" onClick={() => setNavOpen((v) => !v)}>
+          <button className="burger" aria-label="Menú" onClick={() => setNavOpen((v) => !v)}>
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -94,16 +125,16 @@ export default function Home() {
       <section className="hero" id="inicio">
         <div className="wrap hero-grid">
           <div>
-            <span className="eyebrow">Psicologia forense · Colombia</span>
-            <h1>Evaluacion <em>psicologica</em> forense</h1>
-            <p className="lead">Peritajes y asesorias psico-juridicas con rigor cientifico, al servicio de decisiones judiciales claras y fundamentadas.</p>
+            <span className="eyebrow">Psicología forense · Colombia</span>
+            <h1>Evaluación <em>psicológica</em> forense</h1>
+            <p className="lead">Peritajes y asesorías psico-jurídicas con rigor científico, al servicio de decisiones judiciales claras y fundamentadas.</p>
             <div className="hero-actions">
               <a href="#contacto" className="btn btn-primary">Agendar consulta</a>
               <a href="#servicios" className="btn btn-ghost">Ver servicios</a>
             </div>
           </div>
           <div className="hero-card">
-            <h3>Areas de actuacion</h3>
+            <h3>Áreas de actuación</h3>
             <ul>
               <li>Derecho penal</li>
               <li>Derecho de familia</li>
@@ -122,11 +153,11 @@ export default function Home() {
             <h2>Ciencia de vanguardia al servicio de la justicia</h2>
           </div>
           <div>
-            <p>En Psiforensic la evaluacion forense se fundamenta en el estado del arte de la ciencia psicologica. Integramos los avances mas recientes y rigurosos en neuropsicologia, evaluacion de la credibilidad y analisis del comportamiento para ofrecer peritajes actualizados, tecnicamente solidos y defendibles.</p>
-            <p>Cada informe traduce el conocimiento cientifico de vanguardia en evidencia clara y util para la toma de decisiones judiciales, con objetividad e imparcialidad como principios rectores.</p>
+            <p>En Psiforensic la evaluación forense se fundamenta en el estado del arte de la ciencia psicológica. Integramos los avances más recientes y rigurosos en neuropsicología, evaluación de la credibilidad y análisis del comportamiento para ofrecer peritajes actualizados, técnicamente sólidos y defendibles.</p>
+            <p>Cada informe traduce el conocimiento científico de vanguardia en evidencia clara y útil para la toma de decisiones judiciales, con objetividad e imparcialidad como principios rectores.</p>
             <div className="sign">
               <strong>Laura Quintero</strong>
-              <em>Psicologa especialista en criminologia y psicologia forense aplicada. Doctorante en Psicologia. Investigacion cientifica en psicologia.</em>
+              <em>Psicóloga especialista en criminología y psicología forense aplicada. Doctorante en Psicología. Investigación científica en psicología.</em>
             </div>
           </div>
         </div>
@@ -137,7 +168,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head">
             <span className="eyebrow">Servicios</span>
-            <h2>Servicios psicojuridicos y forenses</h2>
+            <h2>Servicios psicojurídicos y forenses</h2>
             <p>Evaluaciones e informes periciales fundamentados en evidencia, aplicables a procesos penales, de familia, civiles y laborales.</p>
           </div>
           <div className="services-grid">
@@ -152,12 +183,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* POR QUE */}
+      {/* POR QUÉ */}
       <section className="why">
         <div className="wrap">
           <div className="section-head">
-            <span className="eyebrow">Por que elegir Psiforensic</span>
-            <h2>Rigor, objetividad y defensa tecnica</h2>
+            <span className="eyebrow">Por qué elegir Psiforensic</span>
+            <h2>Rigor, objetividad y defensa técnica</h2>
           </div>
           <div className="why-grid">
             {why.map(([ic, title, desc]) => (
@@ -176,7 +207,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head">
             <span className="eyebrow">Procedimiento</span>
-            <h2>Como trabajamos tu caso</h2>
+            <h2>Cómo trabajamos tu caso</h2>
           </div>
           <div className="steps">
             {steps.map(([n, title, desc]) => (
@@ -212,10 +243,10 @@ export default function Home() {
       <section className="cover">
         <div className="wrap">
           <span className="eyebrow">Cobertura</span>
-          <h2>Atencion a nivel nacional</h2>
+          <h2>Atención a nivel nacional</h2>
           <div className="cities">
             <span className="chip">Barranquilla</span>
-            <span className="chip">Bogota</span>
+            <span className="chip">Bogotá</span>
             <span className="chip"><span className="accent">Cobertura nacional</span></span>
           </div>
         </div>
@@ -227,39 +258,51 @@ export default function Home() {
           <div className="contact-info">
             <span className="eyebrow">Contacto</span>
             <h2>Agenda tu consulta inicial</h2>
-            <p className="intro">Cuentanos brevemente sobre tu caso. En la consulta inicial estudiamos la situacion y te orientamos sobre el servicio mas adecuado.</p>
-            <div className="contact-row"><div className="ic">&#9993;</div><div><b>Correo</b><span>lauraquintero@psiforensic.com</span></div></div>
-            <div className="contact-row"><div className="ic">&#9990;</div><div><b>WhatsApp</b><span><a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", fontWeight: 600 }}>Escribenos por WhatsApp</a></span></div></div>
-            <div className="contact-row"><div className="ic">&#9906;</div><div><b>Ubicacion</b><span>Barranquilla · Bogota · Cobertura nacional</span></div></div>
+            <p className="intro">Cuéntanos brevemente sobre tu caso. En la consulta inicial estudiamos la situación y te orientamos sobre el servicio más adecuado.</p>
+            <div className="contact-row"><div className="ic">&#9993;</div><div><b>Correo</b><span>{LEAD_EMAIL}</span></div></div>
+            <div className="contact-row"><div className="ic">&#9990;</div><div><b>WhatsApp</b><span><a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", fontWeight: 600 }}>Escríbenos por WhatsApp</a></span></div></div>
+            <div className="contact-row"><div className="ic">&#9906;</div><div><b>Ubicación</b><span>Barranquilla · Bogotá · Cobertura nacional</span></div></div>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="field"><label>Nombre completo</label><input type="text" name="nombre" required /></div>
-            <div className="field"><label>Correo electronico</label><input type="email" name="correo" required /></div>
-            <div className="field"><label>Telefono</label><input type="tel" name="telefono" /></div>
+            <div className="field"><label>Correo electrónico</label><input type="email" name="correo" required /></div>
+            <div className="field"><label>Teléfono</label><input type="tel" name="telefono" /></div>
             <div className="field">
               <label>Tipo de servicio</label>
               <select name="servicio" defaultValue="">
-                <option value="">Selecciona una opcion</option>
-                <option>Evaluacion de credibilidad de testimonio</option>
-                <option>Evaluacion de dano y secuelas psicologicas</option>
-                <option>Evaluacion de victimas y agresores</option>
-                <option>Evaluacion forense de ninos, ninas y adolescentes</option>
+                <option value="">Selecciona una opción</option>
+                <option>Evaluación de credibilidad de testimonio</option>
+                <option>Evaluación de daño y secuelas psicológicas</option>
+                <option>Evaluación de víctimas y agresores</option>
+                <option>Evaluación forense de niños, niñas y adolescentes</option>
                 <option>Idoneidad parental y custodia</option>
                 <option>Riesgo de comportamiento violento</option>
                 <option>Capacidad de testar</option>
                 <option>Metapericia</option>
                 <option>Contraperitaje</option>
-                <option>Asesoria tecnico-cientifica</option>
+                <option>Asesoría técnico-científica</option>
                 <option>Otro / No estoy seguro</option>
               </select>
             </div>
-            <div className="field"><label>Cuentanos brevemente tu caso</label><textarea name="mensaje" /></div>
+            <div className="field"><label>Cuéntanos brevemente tu caso</label><textarea name="mensaje" /></div>
             <label className="consent">
               <input type="checkbox" required />
-              <span>Autorizo el tratamiento de mis datos conforme a la <a onClick={(e) => { e.preventDefault(); setPrivOpen(true); }}>Politica de Privacidad</a>.</span>
+              <span>Autorizo el tratamiento de mis datos conforme a la <a onClick={(e) => { e.preventDefault(); setPrivOpen(true); }}>Política de Privacidad</a>.</span>
             </label>
-            <button type="submit" className="btn btn-primary">Enviar solicitud</button>
-            <p className="form-note">Tu informacion se maneja de forma confidencial.</p>
+            <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
+              {status === "sending" ? "Enviando…" : "Enviar solicitud"}
+            </button>
+            {status === "ok" ? (
+              <p className="form-note" style={{ color: "var(--deep-2)", fontWeight: 600 }}>
+                ¡Gracias! Recibimos tu solicitud, te contactaremos pronto.
+              </p>
+            ) : status === "error" ? (
+              <p className="form-note" style={{ color: "var(--gold)", fontWeight: 600 }}>
+                No se pudo enviar. Escríbenos por WhatsApp o a {LEAD_EMAIL}.
+              </p>
+            ) : (
+              <p className="form-note">Tu información se maneja de forma confidencial.</p>
+            )}
           </form>
         </div>
       </section>
@@ -270,10 +313,10 @@ export default function Home() {
           <div className="foot-grid">
             <div>
               <a href="#inicio" className="brand"><Logo />Psi<span className="accent">forensic</span></a>
-              <p className="tag">Evaluacion psicologica forense con rigor cientifico. Peritajes, contraperitajes, metapericias y asesoria tecnico-cientifica.</p>
+              <p className="tag">Evaluación psicológica forense con rigor científico. Peritajes, contraperitajes, metapericias y asesoría técnico-científica.</p>
             </div>
             <div>
-              <h4>Navegacion</h4>
+              <h4>Navegación</h4>
               <ul>
                 <li><a href="#sobre">Sobre Psiforensic</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -285,15 +328,15 @@ export default function Home() {
             <div>
               <h4>Contacto</h4>
               <ul>
-                <li><a href="mailto:lauraquintero@psiforensic.com">lauraquintero@psiforensic.com</a></li>
+                <li><a href={`mailto:${LEAD_EMAIL}`}>{LEAD_EMAIL}</a></li>
                 <li><a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); setPrivOpen(true); }} style={{ cursor: "pointer" }}>Politica de Privacidad</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); setPrivOpen(true); }} style={{ cursor: "pointer" }}>Política de Privacidad</a></li>
               </ul>
             </div>
           </div>
           <div className="foot-bottom">
             <span>© 2026 Psiforensic. Todos los derechos reservados.</span>
-            <span>Laura Quintero · Psicologia Forense</span>
+            <span>Laura Quintero · Psicología Forense</span>
           </div>
         </div>
       </footer>
@@ -308,10 +351,10 @@ export default function Home() {
         <div className="modal" onClick={(e) => e.stopPropagation()}>
           <button className="modal-close" onClick={() => setPrivOpen(false)} aria-label="Cerrar">&times;</button>
           <h3>Aviso de Privacidad y Tratamiento de Datos</h3>
-          <p>En cumplimiento de la Ley 1581 de 2012, los datos que suministras a traves de este formulario (nombre, correo y telefono) seran tratados de forma confidencial y unicamente para responder tu solicitud y coordinar una consulta inicial. No se solicitan datos sensibles a traves de este sitio.</p>
+          <p>En cumplimiento de la Ley 1581 de 2012, los datos que suministras a través de este formulario (nombre, correo y teléfono) serán tratados de forma confidencial y únicamente para responder tu solicitud y coordinar una consulta inicial. No se solicitan datos sensibles a través de este sitio.</p>
           <h4>Tus derechos</h4>
-          <p>Como titular, puedes conocer, actualizar, rectificar o suprimir tus datos y revocar esta autorizacion escribiendo a lauraquintero@psiforensic.com.</p>
-          <h4>Autorizacion</h4>
+          <p>Como titular, puedes conocer, actualizar, rectificar o suprimir tus datos y revocar esta autorización escribiendo a {LEAD_EMAIL}.</p>
+          <h4>Autorización</h4>
           <p>Al enviar este formulario, autorizas el tratamiento de tus datos para los fines descritos en este aviso.</p>
         </div>
       </div>

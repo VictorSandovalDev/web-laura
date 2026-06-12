@@ -16,9 +16,9 @@ const hanken = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Psiforensic | Evaluacion Psicologica Forense — Peritajes y Asesorias",
+  title: "Psiforensic | Evaluación Psicológica Forense — Peritajes y Asesorías",
   description:
-    "Psiforensic: evaluacion psicologica forense con rigor cientifico. Peritajes, contraperitajes, metapericias y asesoria tecnico-cientifica en Barranquilla, Bogota y a nivel nacional.",
+    "Psiforensic: evaluación psicológica forense con rigor científico. Peritajes, contraperitajes, metapericias y asesoría técnico-científica en Barranquilla, Bogotá y a nivel nacional.",
 };
 
 export default function RootLayout({
